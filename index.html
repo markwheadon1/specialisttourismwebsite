@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WanderWay Travel</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f8fa;
+    color: #263640;
+    line-height: 1.6;
+}
+
+button {
+    font-family: inherit;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 55px;
+    background: #ffffff;
+    box-shadow: 0 3px 18px rgba(0,0,0,0.10);
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 800;
+    color: #087ea4;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #f4a261;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav button {
+    border: none;
+    background: transparent;
+    color: #344955;
+    padding: 11px 18px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+nav button:hover {
+    background: #087ea4;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,38,55,0.82),
+            rgba(0,38,55,0.20)
+        ),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 850px;
+    padding: 70px 8%;
+    color: white;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.7;
+    max-width: 720px;
+}
+
+.intro {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 30px;
+    text-align: center;
+}
+
+.section-label {
+    color: #f4a261;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.intro h2 {
+    font-size: 38px;
+    color: #123b4a;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    max-width: 850px;
+    margin: auto;
+    color: #667780;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.home-holidays {
+    max-width: 1250px;
+    margin: auto;
+    padding: 0 30px 85px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading h2 {
+    color: #123b4a;
+    font-size: 37px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.home-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+    transition: 0.3s;
+}
+
+.home-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+}
+
+.home-card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    display: block;
+}
+
+.home-card-content {
+    padding: 23px;
+}
+
+.home-card h3 {
+    color: #087ea4;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.home-card p {
+    color: #687780;
+    line-height: 1.65;
+}
+
+.why-us {
+    background: #eaf5f8;
+    padding: 75px 30px;
+}
+
+.why-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.why-container h2 {
+    color: #123b4a;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.why-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.why-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.why-card h3 {
+    color: #087ea4;
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    color: #687780;
+    line-height: 1.6;
+}
+
+.customer-page {
+    padding: 55px 25px 90px;
+}
+
+.customer-container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.10);
+}
+
+.customer-header {
+    background:
+        linear-gradient(
+            135deg,
+            #087ea4,
+            #19a7c7
+        );
+
+    color: white;
+    padding: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customer-header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.customer-header p {
+    font-size: 18px;
+}
+
+.customer-number {
+    font-size: 70px;
+    font-weight: 800;
+    opacity: 0.18;
+}
+
+.customer-body {
+    padding: 45px;
+}
+
+.profile-title {
+    color: #123b4a;
+    font-size: 29px;
+    margin-bottom: 25px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 45px;
+}
+
+.profile-box {
+    background: #f1f8fa;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #087ea4;
+}
+
+.profile-box strong {
+    display: block;
+    color: #087ea4;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 8px;
+}
+
+.profile-box span {
+    color: #344955;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.customer-information {
+    margin-bottom: 35px;
+}
+
+.customer-information h2 {
+    color: #123b4a;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.customer-information p {
+    color: #667780;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.recommendations-header {
+    margin-top: 55px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e1eaed;
+}
+
+.recommendations-header h2 {
+    color: #123b4a;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.recommendations-header p {
+    color: #667780;
+    line-height: 1.7;
+}
+
+.holiday-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.holiday-card {
+    background: white;
+    border: 1px solid #e0eaed;
+    border-radius: 17px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+.holiday-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.13);
+}
+
+.holiday-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.holiday-content {
+    padding: 22px;
+}
+
+.holiday-content h3 {
+    color: #087ea4;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.holiday-content > p {
+    color: #687780;
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 17px;
+}
+
+.route {
+    background: #f1f8fa;
+    padding: 14px;
+    border-radius: 9px;
+    color: #344955;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 15px;
+}
+
+.route strong {
+    color: #087ea4;
+}
+
+.suits {
+    background: #eef8f3;
+    border-left: 5px solid #42a66a;
+    padding: 19px;
+    border-radius: 9px;
+}
+
+.suits h4 {
+    color: #287747;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.suits p {
+    color: #50675a;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.back-button {
+    margin-top: 45px;
+    border: none;
+    background: #087ea4;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.back-button:hover {
+    background: #065e7a;
+    transform: translateY(-2px);
+}
+
+footer {
+    background: #123b4a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 18px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav button {
+        padding: 9px 12px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .home-grid,
+    .why-grid,
+    .holiday-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-header {
+        padding: 30px;
+        align-items: flex-start;
+    }
+
+    .customer-number {
+        display: none;
+    }
+
+    .customer-body {
+        padding: 30px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Wander<span>Way</span> Travel
+    </div>
+
+    <nav>
+
+        <button onclick="showPage('home')">
+            Home
+        </button>
+
+        <button onclick="showPage('customer1')">
+            Customer 1
+        </button>
+
+        <button onclick="showPage('customer2')">
+            Customer 2
+        </button>
+
+        <button onclick="showPage('customer3')">
+            Customer 3
+        </button>
+
+    </nav>
+
+</header>
+
+
+<section id="home" class="page">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                WANDERWAY TRAVEL
+            </div>
+
+            <h1>
+                Discover Your Perfect Holiday
+            </h1>
+
+            <p>
+                WanderWay Travel helps customers find holidays
+                based around their individual interests, budget,
+                needs and expectations. We create personalised
+                travel experiences rather than treating every
+                customer the same.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="intro">
+
+        <div class="section-label">
+            About us
+        </div>
+
+        <h2>
+            Travel designed around you
+        </h2>
+
+        <p>
+            Every traveller has different needs. At WanderWay Travel,
+            we look at the customer's interests, budget, fitness,
+            accessibility requirements, health considerations,
+            dietary needs and preferred activities before suggesting
+            a holiday. This allows us to provide recommendations
+            that are more suitable for each individual customer.
+        </p>
+
+    </div>
+
+
+    <div class="home-holidays">
+
+        <div class="heading">
+
+            <div class="section-label">
+                Explore the world
+            </div>
+
+            <h2>
+                Holiday Inspiration
+            </h2>
+
+        </div>
+
+
+        <div class="home-grid">
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=85"
+                    alt="Cruise ship">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        Cruise Holidays
+                    </h3>
+
+                    <p>
+                        Visit multiple destinations while enjoying
+                        accommodation, entertainment and restaurants
+                        onboard one ship.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=85"
+                    alt="Spa and wellness">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        Wellness Holidays
+                    </h3>
+
+                    <p>
+                        Relax with spa treatments, wellness activities
+                        and peaceful surroundings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=1200&q=85"
+                    alt="European city">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        Cultural Holidays
+                    </h3>
+
+                    <p>
+                        Discover history, architecture, museums,
+                        traditions and local cultures.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+                    alt="Mountain adventure">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        Adventure Holidays
+                    </h3>
+
+                    <p>
+                        Explore new environments and experience exciting
+                        outdoor activities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85"
+                    alt="Beach holiday">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        Beach Holidays
+                    </h3>
+
+                    <p>
+                        Relax in beautiful coastal destinations and
+                        enjoy time away from everyday life.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=1200&q=85"
+                    alt="European travel">
+
+                <div class="home-card-content">
+
+                    <h3>
+                        European Getaways
+                    </h3>
+
+                    <p>
+                        Experience new cities, food, attractions and
+                        cultures across Europe.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="why-us">
+
+        <div class="why-container">
+
+            <div class="section-label">
+                Our approach
+            </div>
+
+            <h2>
+                Holidays made personal
+            </h2>
+
+            <div class="why-grid">
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ✈️
+                    </div>
+
+                    <h3>
+                        Personalised
+                    </h3>
+
+                    <p>
+                        We look at the individual customer before
+                        recommending their holiday.
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        🌍
+                    </div>
+
+                    <h3>
+                        Worldwide
+                    </h3>
+
+                    <p>
+                        We provide a range of destinations and
+                        experiences around the world.
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ⭐
+                    </div>
+
+                    <h3>
+                        Customer Focused
+                    </h3>
+
+                    <p>
+                        Our recommendations are based around what
+                        the customer actually wants and needs.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        © 2026 WanderWay Travel | Your journey, your way.
+    </footer>
+
+</section>
+
+
+<section id="customer1" class="page">
+
+<div class="customer-page">
+
+<div class="customer-container">
+
+
+    <div class="customer-header">
+
+        <div>
+
+            <h1>
+                Customer 1
+            </h1>
+
+            <p>
+                Margaret • Cruise Tourism
+            </p>
+
+        </div>
+
+        <div class="customer-number">
+            01
+        </div>
+
+    </div>
+
+
+    <div class="customer-body">
+
+
+        <h2 class="profile-title">
+            Margaret's Full Customer Profile
+        </h2>
+
+
+        <div class="profile-grid">
+
+
+            <div class="profile-box">
+                <strong>Name</strong>
+                <span>Margaret</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Age</strong>
+                <span>70</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Occupation</strong>
+                <span>Charity shop worker</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Tourism Type</strong>
+                <span>Cruise tourism</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Budget</strong>
+                <span>High budget</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Fitness Level</strong>
+                <span>Low fitness</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Mobility</strong>
+                <span>Uses a walking stick and occasionally a wheelchair</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Health</strong>
+                <span>High blood pressure and arthritis</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Hearing</strong>
+                <span>Bad hearing / difficulty hearing</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Dental</strong>
+                <span>Has dentures</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Food</strong>
+                <span>Needs soft food</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Dietary Requirement</strong>
+                <span>Lactose intolerant</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Likes</strong>
+                <span>Live music and TV</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Dislikes</strong>
+                <span>Parties, loud children and crowds</span>
+            </div>
+
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Customer Needs
+            </h2>
+
+            <p>
+                Margaret would benefit from a comfortable cruise
+                where she can relax without needing to walk long
+                distances every day. Her low fitness, arthritis and
+                use of a walking stick and occasional wheelchair
+                mean that accessibility should be considered when
+                choosing her ship, cabin and excursions.
+            </p>
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Food and Accessibility
+            </h2>
+
+            <p>
+                Margaret's lactose intolerance and need for soft
+                food should be communicated to the cruise company
+                before travelling. An accessible cabin and suitable
+                facilities should also be requested where required.
+                Because she has bad hearing, quieter entertainment
+                and suitable seating would also be useful.
+            </p>
+
+        </div>
+
+
+        <div class="recommendations-header">
+
+            <h2>
+                3 Recommended Cruises for Margaret
+            </h2>
+
+            <p>
+                These are specific cruise holidays with the route
+                included rather than simply recommending individual
+                destinations.
+            </p>
+
+        </div>
+
+
+        <div class="holiday-grid">
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=85"
+                    alt="Cruise ship">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Brilliance of the Seas
+                    </h3>
+
+                    <div class="route">
+
+                        <strong>
+                            Royal Caribbean – 7 Night Italy & France
+                        </strong>
+
+                        <br><br>
+
+                        Barcelona →
+                        Toulon →
+                        Ajaccio, Corsica →
+                        Rome/Civitavecchia →
+                        Naples/Capri →
+                        Messina, Sicily →
+                        Sea Day →
+                        Ravenna
+
+                    </div>
+
+                    <p>
+                        A Mediterranean cruise visiting several
+                        European destinations while Margaret stays
+                        onboard the same ship.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Margaret
+                        </h4>
+
+                        <p>
+                            Margaret can unpack once while visiting
+                            several destinations. The ship gives her
+                            places to relax, restaurants and entertainment
+                            without needing to travel between hotels.
+                            Live music also matches one of her interests.
+                            She could choose shorter excursions or remain
+                            onboard when a port involves too much walking.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=85"
+                    alt="Italian coastline">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Brilliance of the Seas
+                    </h3>
+
+                    <div class="route">
+
+                        <strong>
+                            Royal Caribbean – Italy, Spain & French Riviera
+                        </strong>
+
+                        <br><br>
+
+                        Rome/Civitavecchia →
+                        La Spezia →
+                        Florence/Pisa →
+                        Santa Margherita →
+                        Villefranche/Nice →
+                        Marseille →
+                        Sea Day →
+                        Valencia →
+                        Barcelona
+
+                    </div>
+
+                    <p>
+                        A 7-night European cruise combining Italy,
+                        France and Spain.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Margaret
+                        </h4>
+
+                        <p>
+                            This cruise includes a sea day so Margaret
+                            does not have to be active at a port every
+                            day. Her high budget could allow her to choose
+                            a more comfortable cabin and suitable facilities.
+                            She can enjoy the ship's entertainment while
+                            avoiding crowded or strenuous excursions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=85"
+                    alt="Greek islands">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Brilliance of the Seas
+                    </h3>
+
+                    <div class="route">
+
+                        <strong>
+                            Royal Caribbean – Greek Isles & Turkey
+                        </strong>
+
+                        <br><br>
+
+                        Athens/Piraeus →
+                        Mykonos →
+                        Istanbul →
+                        Sea Day →
+                        Kusadasi/Ephesus →
+                        Santorini →
+                        Athens/Piraeus
+
+                    </div>
+
+                    <p>
+                        A 7-night cruise visiting Greece and Turkey
+                        with time at sea.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Margaret
+                        </h4>
+
+                        <p>
+                            Margaret can choose how much activity she
+                            wants to do at each port. The sea day gives
+                            her time to relax and enjoy the ship. Live
+                            entertainment and comfortable onboard areas
+                            suit her interests, while accessibility should
+                            be checked for individual ports before booking.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="back-button"
+            onclick="showPage('home')">
+
+            ← Back to Home
+
+        </button>
+
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="customer2" class="page">
+
+<div class="customer-page">
+
+<div class="customer-container">
+
+
+    <div class="customer-header">
+
+        <div>
+
+            <h1>
+                Customer 2
+            </h1>
+
+            <p>
+                Emilija • Wellness Tourism
+            </p>
+
+        </div>
+
+        <div class="customer-number">
+            02
+        </div>
+
+    </div>
+
+
+    <div class="customer-body">
+
+
+        <h2 class="profile-title">
+            Emilija's Full Customer Profile
+        </h2>
+
+
+        <div class="profile-grid">
+
+
+            <div class="profile-box">
+                <strong>Name</strong>
+                <span>Emilija</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Age</strong>
+                <span>18</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Occupation</strong>
+                <span>Housekeeper</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Tourism Type</strong>
+                <span>Wellness tourism</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Budget</strong>
+                <span>Low budget</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Fitness Level</strong>
+                <span>Moderate fitness</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Mobility</strong>
+                <span>No mobility needs</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Medical Needs</strong>
+                <span>No specific medical needs</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Food</strong>
+                <span>Does not eat fish</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Likes</strong>
+                <span>Relaxing, nightlife, exploring and shopping</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Dislikes</strong>
+                <span>Strenuous activities</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Weather</strong>
+                <span>Dislikes hot weather</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Environment</strong>
+                <span>Dislikes insects</span>
+            </div>
+
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Customer Needs
+            </h2>
+
+            <p>
+                Emilija is looking for a wellness holiday but does
+                not want the trip to be based around strenuous
+                activities. She wants to relax while also having
+                opportunities to explore, shop and enjoy nightlife.
+                Because she has a low budget, affordable travel,
+                accommodation and activities are important.
+            </p>
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Food and Activities
+            </h2>
+
+            <p>
+                Emilija does not eat fish, so restaurants with a
+                range of food options should be considered. Her
+                moderate fitness means she can explore destinations
+                and take part in gentle activities, but strenuous
+                activities should not be a major part of the trip.
+            </p>
+
+        </div>
+
+
+        <div class="recommendations-header">
+
+            <h2>
+                3 Recommended Holidays for Emilija
+            </h2>
+
+            <p>
+                These destinations combine wellness and relaxation
+                with shopping, exploring and opportunities for
+                nightlife.
+            </p>
+
+        </div>
+
+
+        <div class="holiday-grid">
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=85"
+                    alt="Ljubljana Slovenia">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Ljubljana, Slovenia
+                    </h3>
+
+                    <p>
+                        A relaxing European city break with wellness
+                        facilities, restaurants, shopping and
+                        opportunities to explore.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Emilija
+                        </h4>
+
+                        <p>
+                            Ljubljana has wellness and spa facilities,
+                            giving Emilija opportunities to relax without
+                            needing strenuous activities. She can also
+                            explore the city, shop and experience
+                            restaurants and evening entertainment.
+                            A shorter European break could help keep
+                            costs lower.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=85"
+                    alt="Budapest Hungary">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Budapest, Hungary
+                    </h3>
+
+                    <p>
+                        A city break combining thermal baths,
+                        sightseeing, shopping, restaurants and
+                        nightlife.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Emilija
+                        </h4>
+
+                        <p>
+                            Budapest is suitable because of its
+                            wellness facilities and thermal baths.
+                            Emilija can spend time relaxing while also
+                            exploring the city, shopping and enjoying
+                            nightlife. She does not need to take part
+                            in strenuous activities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <!-- WORKING PRAGUE IMAGE -->
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Prague%2C_Czech_Republic_%28Unsplash%29.jpg/1280px-Prague%2C_Czech_Republic_%28Unsplash%29.jpg"
+                    alt="Prague Czech Republic">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Prague, Czech Republic
+                    </h3>
+
+                    <p>
+                        A European city break with sightseeing,
+                        shopping, restaurants, culture and evening
+                        entertainment.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits Emilija
+                        </h4>
+
+                        <p>
+                            Prague gives Emilija a mixture of relaxing
+                            and exploring. She can visit attractions
+                            during the day, shop and enjoy restaurants
+                            and nightlife in the evening. The holiday
+                            could be planned as a shorter European trip
+                            to suit her low budget.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="back-button"
+            onclick="showPage('home')">
+
+            ← Back to Home
+
+        </button>
+
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="customer3" class="page">
+
+<div class="customer-page">
+
+<div class="customer-container">
+
+
+    <div class="customer-header">
+
+        <div>
+
+            <h1>
+                Customer 3
+            </h1>
+
+            <p>
+                John • Cultural Tourism
+            </p>
+
+        </div>
+
+        <div class="customer-number">
+            03
+        </div>
+
+    </div>
+
+
+    <div class="customer-body">
+
+
+        <h2 class="profile-title">
+            John's Full Customer Profile
+        </h2>
+
+
+        <div class="profile-grid">
+
+
+            <div class="profile-box">
+                <strong>Name</strong>
+                <span>John</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Age</strong>
+                <span>38</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Occupation</strong>
+                <span>Engineer</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Tourism Type</strong>
+                <span>Cultural tourism</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Budget</strong>
+                <span>Medium/high budget</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Fitness Level</strong>
+                <span>High fitness</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Mobility</strong>
+                <span>No mobility needs</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Health</strong>
+                <span>Epilepsy and diabetes</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Diet</strong>
+                <span>Requires a diabetic diet</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Likes</strong>
+                <span>History, relaxing and culture</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Dislikes</strong>
+                <span>Hotel entertainment</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Children</strong>
+                <span>Dislikes crying children</span>
+            </div>
+
+
+            <div class="profile-box">
+                <strong>Alcohol</strong>
+                <span>Dislikes alcohol</span>
+            </div>
+
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Customer Needs
+            </h2>
+
+            <p>
+                John is interested in history and culture and wants
+                a holiday where he can explore attractions and learn
+                about the destination. His high fitness level means
+                walking tours and sightseeing can be included. He
+                also wants opportunities to relax rather than having
+                a holiday focused on hotel entertainment.
+            </p>
+
+        </div>
+
+
+        <div class="customer-information">
+
+            <h2>
+                Health and Dietary Requirements
+            </h2>
+
+            <p>
+                John's epilepsy and diabetes should be considered
+                when planning his trip. His diabetic dietary
+                requirements should be communicated to accommodation
+                providers and restaurants. Travel planning should
+                also take account of any medication and healthcare
+                arrangements he requires.
+            </p>
+
+        </div>
+
+
+        <div class="recommendations-header">
+
+            <h2>
+                3 Recommended Holidays for John
+            </h2>
+
+            <p>
+                These destinations have been selected because of
+                their strong history and culture while also giving
+                John opportunities to relax.
+            </p>
+
+        </div>
+
+
+        <div class="holiday-grid">
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=85"
+                    alt="Rome Italy">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Rome, Italy
+                    </h3>
+
+                    <p>
+                        A cultural city break with ancient landmarks,
+                        museums, architecture and historical attractions.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits John
+                        </h4>
+
+                        <p>
+                            Rome matches John's interest in history and
+                            culture. He could visit the Colosseum, Roman
+                            Forum and Vatican Museums and take walking
+                            tours around the city. His high fitness level
+                            allows him to explore on foot while still
+                            including time to relax.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=85"
+                    alt="Florence Italy">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Florence, Italy
+                    </h3>
+
+                    <p>
+                        A cultural holiday focused on Renaissance art,
+                        museums, architecture and Italian history.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits John
+                        </h4>
+
+                        <p>
+                            Florence matches John's interest in culture
+                            and history because he can visit museums,
+                            galleries, historic buildings and famous
+                            landmarks. He can also spend time relaxing
+                            in cafés and restaurants instead of relying
+                            on hotel entertainment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="holiday-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1200&q=85"
+                    alt="Athens Greece">
+
+                <div class="holiday-content">
+
+                    <h3>
+                        Athens, Greece
+                    </h3>
+
+                    <p>
+                        A historical city break featuring ancient sites,
+                        museums, architecture and Greek culture.
+                    </p>
+
+                    <div class="suits">
+
+                        <h4>
+                            Why this suits John
+                        </h4>
+
+                        <p>
+                            Athens is a good match for John's interest
+                            in history and culture. He could visit the
+                            Acropolis, Acropolis Museum and archaeological
+                            sites. His high fitness level means walking
+                            tours could be included, alongside quieter
+                            periods for relaxing.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="back-button"
+            onclick="showPage('home')">
+
+            ← Back to Home
+
+        </button>
+
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+function showPage(pageName) {
+
+    window.location.hash = pageName;
+
+}
+
+function loadPage() {
+
+    let pageName = window.location.hash.substring(1);
+
+    if (!pageName) {
+
+        pageName = "home";
+
+    }
+
+    const allowedPages = [
+        "home",
+        "customer1",
+        "customer2",
+        "customer3"
+    ];
+
+    if (!allowedPages.includes(pageName)) {
+
+        pageName = "home";
+
+    }
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+    const selectedPage =
+        document.getElementById(pageName);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+}
+
+window.addEventListener(
+    "DOMContentLoaded",
+    loadPage
+);
+
+window.addEventListener(
+    "hashchange",
+    loadPage
+);
+
+</script>
+
+
+</body>
+
+</html>
